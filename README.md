@@ -1,3 +1,6 @@
+## CRM System
+포트폴리오, 공부용으로 만든 고객관리 시스템입니다.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
