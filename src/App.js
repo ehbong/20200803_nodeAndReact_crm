@@ -1,14 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+/* eslint-disable jsx-a11y/alt-text */
+/* eslint-disable react/no-unescaped-entities */
+import React, { Component } from 'react';
 import './App.css';
+import Customer from './components/Customer';
 
-function App() {
-  return (
-    <div className="gray-background">
-      <img src={logo} lat="logo"/>
-        <h2>Let's develop management system!</h2>
-    </div>
-  );
+
+const customer = {
+  id: 1,
+  image: 'https://placecimg.com/64/64/any',
+  name: '홍길동',
+  birthday: '961222',
+  gender: '남자',
+  job: '대학생',
+};
+class App extends Component {
+  render(){
+    return (
+      <Customer 
+        id={customer.id}
+        image={customer.image}
+        name={customer.name}
+        birthday={customer.birthday}
+        gender={customer.gender}
+        job={customer.job}
+      />
+    );
+  }
 }
 
 export default App;
