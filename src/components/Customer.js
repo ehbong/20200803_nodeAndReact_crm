@@ -1,17 +1,16 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
-import { div } from 'prelude-ls';
 
 class Customer extends React.Component {
   render() {
     return (
       <div>
-        <CustomerProfile 
+        <CustomerProfile
           id={this.props.id}
           image={this.props.image}
           name={this.props.name}
         />
-        <CustomerInfo 
+        <CustomerInfo
           birthday={this.props.birthday}
           gender={this.props.gender}
           job={this.props.job}
@@ -21,18 +20,23 @@ class Customer extends React.Component {
   }
 }
 
-class CustomerProfile extends React.Component{
-  render(){
+class CustomerProfile extends React.Component {
+  render() {
     return (
       <div>
-        <img src={this.props.image} alt="profile"/>
-        <h2>{this.props.name}({this.props.id})</h2>
+        <img src={this.props.image} alt="profile" />
+        <h2>
+          {this.props.name}
+          (
+          {this.props.id}
+          )
+        </h2>
       </div>
     );
   }
 }
-class CustomerInfo extends React.Component{
-  render(){
+class CustomerInfo extends React.Component {
+  render() {
     return (
       <div>
         <p>{this.props.birthday}</p>
