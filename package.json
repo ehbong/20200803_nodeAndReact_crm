@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
@@ -18,19 +19,47 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": ["react-app", "airbnb"],
-    "rules":{
+    "extends": [
+      "react-app",
+      "airbnb"
+    ],
+    "rules": {
       "react/prefer-stateless-function": 0,
       "react/jsx-one-expression-per-line": 0,
-      "react/jsx-filename-extension": [1, { "extensions": ["js", "jsx"] }],
-      "arrow-parens": ["warn", "as-needed"],
-      "no-unused-vars": ["off"],
-      "no-console": ["off"],
-      "import/prefer-default-export": ["off"],
-      "react-hooks/exhaustive-deps": ["warn"],
-      "react/jsx-props-no-spreading": ["warn"],
-      "react/prop-types": ["off"],
-      "no-underscore-dangle": ["off"]
+      "react/jsx-filename-extension": [
+        1,
+        {
+          "extensions": [
+            "js",
+            "jsx"
+          ]
+        }
+      ],
+      "arrow-parens": [
+        "warn",
+        "as-needed"
+      ],
+      "no-unused-vars": [
+        "off"
+      ],
+      "no-console": [
+        "off"
+      ],
+      "import/prefer-default-export": [
+        "off"
+      ],
+      "react-hooks/exhaustive-deps": [
+        "warn"
+      ],
+      "react/jsx-props-no-spreading": [
+        "warn"
+      ],
+      "react/prop-types": [
+        "off"
+      ],
+      "no-underscore-dangle": [
+        "off"
+      ]
     },
     "env": {
       "browser": true
