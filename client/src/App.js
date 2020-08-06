@@ -51,6 +51,7 @@ const customers = [
 class App extends Component {
   render() {
     const { classes } = this.props;
+    console.log(this.props);
     return (
       // 두개이상의 컴포넌트를 사용할때는 반드시 감싸줘야한다. div 등등
       <Paper className={classes.root}>
