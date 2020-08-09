@@ -42,10 +42,10 @@ class App extends Component {
   }
 
   stateRefresh = ()=> {
-    this.state = {
+    this.setState({
       customers: "",
       completed:0
-    }
+    })
     this.callApi()
       .then(res => this.setState({customers:res}))
       .catch(err => console.log(err));
