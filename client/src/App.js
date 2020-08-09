@@ -41,7 +41,7 @@ class App extends Component {
     }
   }
 
-  stateReFresh = ()=> {
+  stateRefresh = ()=> {
     this.state = {
       customers: "",
       completed:0
@@ -85,6 +85,7 @@ class App extends Component {
                 <TableCell>생년월일</TableCell>
                 <TableCell>성별</TableCell>
                 <TableCell>직업</TableCell>
+                <TableCell>설정</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -98,6 +99,7 @@ class App extends Component {
                     birthday={c.birthday}
                     gender={c.gender}
                     job={c.job}
+                    stateRefresh={this.stateRefresh}
                   />
                 ))
               : <TableRow>
@@ -108,7 +110,7 @@ class App extends Component {
             </TableBody>
           </Table>
         </Paper>
-        <CustomerAdd stateReFresh={this.stateReFresh}/>
+        <CustomerAdd stateRefresh={this.stateRefresh}/>
       </div>
     );
   }
