@@ -4,34 +4,50 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = process.env.PORT || 5000;
 const multer = require('multer');
+// const usersRouter = require('./routes/customer');
+const sequelize = require('./models/index');
+
+sequelize.sequelize.sync().then( () => {
+  console.log(" DB 연결 성공");
+}).catch(err => {
+  console.log("연결 실패");
+  console.log(err);
+});
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended : true}));
 
-const data = fs.readFileSync('./database.json');
-const conf = JSON.parse(data);
-console.log(conf);
-const mysql = require('mysql');
+// const data = fs.readFileSync('./database.json');
+// const conf = JSON.parse(data);
+// console.log(conf);
+// const mysql = require('mysql');
 
-const connection = mysql.createConnection({
-  host: conf.host,
-  user: conf.user,
-  password: conf.password,
-  port: conf.port,
-  database: conf.database
-});
-connection.connect();
+// const connection = mysql.createConnection({
+//   host: conf.host,
+//   user: conf.user,
+//   password: conf.password,
+//   port: conf.port,
+//   database: conf.database
+// });
+// connection.connect();
 
 const upload = multer({dest:'./upload'});
 
 app.get('/api/customers', (req, res)=>{
-    connection.query(
-      "SELECT * FROM CUSTOMER WHERE isDeleted = 0",
-      (err, rows, fields)=>{
-        console.log(rows);
-        res.send(rows);
-      }
-    );
+    // connection.query(
+    //   "SELECT * FROM CUSTOMER WHERE isDeleted = 0",
+    //   (err, rows, fields)=>{
+    //     console.log(rows);
+    //     res.send(rows);
+    //   }
+    // );
+    const data = sequelize.Customer.findAll({where:{isDeleted : 0}}).then( result => {
+      console.log("result");
+      console.log(result);
+      res.send(result);
+    }).catch( err => {
+      console.log(err)
+    })
 });
 
 app.use('/image', express.static('./upload'));
@@ -45,21 +61,21 @@ app.post('/api/customers', upload.single('image'), (req, res)=>{
   let job = req.body.job;
   let params = [image, name, birthday, gender, job];
 
-  connection.query(sql, params, 
-    (err, rows, fields)=>{
-      res.send(rows);
-    }
-  );
+  // connection.query(sql, params, 
+  //   (err, rows, fields)=>{
+  //     res.send(rows);
+  //   }
+  // );
 })
 
-app.delete('/api/customers/:id', (req, res)=>{
+app.delete('/api/customers/:id', (req, res)=>{ya
   let sql = 'UPDATE CUSTOMER SET isDeleted = 1 WHERE id = ?';
   let params = [req.params.id];
-  connection.query(sql, params, 
-    (err, rows, fields)=>{
-      res.send(rows);
-    }
-  );
+  // connection.query(sql, params, 
+  //   (err, rows, fields)=>{
+  //     res.send(rows);
+  //   }
+  // );
 });
 
 app.listen(port, ()=>console.log(`Listening on port ${port}`));

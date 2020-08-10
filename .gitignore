@@ -2,6 +2,8 @@
 
 # database
 /database.json
+/config/config.json
+
 
 #upload
 /upload
